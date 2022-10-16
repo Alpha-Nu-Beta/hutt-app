@@ -1,138 +1,127 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Button,
   StyleSheet,
+  View,
   Text,
   Linking,
-  Image,
-  useColorScheme,
-  View,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
 } from 'react-native';
+import {ThemeProvider, Button, Header, createTheme} from '@rneui/themed';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const theme = createTheme({});
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+// Your App
+const App = () => {
   return (
-    <View>
-      <Text style={styles.title}>
-        The title and onPress handler are required. It is recommended to set
-        accessibilityLabel to help make your app usable by everyone.
-      </Text>
-      <Button
-        title="Press me"
-        onPress={() => Alert.alert('Simple Button pressed')}
-      />
-    </View>
-    // {/* </View>
-    // <View style={styles.sectionContainer}>
-    //   <Text
-    //     style={[
-    //       styles.sectionTitle,
-    //       {
-    //         color: isDarkMode ? Colors.white : Colors.black,
-    //       },
-    //     ]}>
-    //     {title}
-    //   </Text>
-    //   <Text
-    //     style={[
-    //       styles.sectionDescription,
-    //       {
-    //         color: isDarkMode ? Colors.light : Colors.dark,
-    //       },
-    //     ]}>
-    //     {children}
-    //   </Text>
-    // </View> */}
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <View>
-        <Image style={styles.tinyLogo} source={require('./imgs/logo.png')} />
-        <Text style={styles.title}>Hutt App</Text>
-        <Button
-          title="Broked Items Form"
-          onPress={() => Linking.openURL('https://aboutreact.com')}
-        />
-      </View>
-      {/* <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <Header centerComponent={{text: '_Hutt_', style: styles.heading}} />
+        <View>
+          <Button
+            disabledTitleStyle={{color: '#00F'}}
+            containerStyle={{
+              margin: 5,
+            }}
+            linearGradientProps={null}
+            iconContainerStyle={{background: '#000'}}
+            loadingProps={{animating: true}}
+            onPress={() =>
+              Linking.openURL(
+                'https://docs.google.com/spreadsheets/d/1F_Dd5uXdyUERgs1E5eKoIn7eXA3Fwt6qygZIHJ_FqQo/edit?usp=sharing',
+              )
+            }
+            title="Meals"
+            titleProps={{}}
+            titleStyle={{marginHorizontal: 5}}
+          />
+          <Button
+            disabledTitleStyle={{color: '#00F'}}
+            containerStyle={{
+              margin: 5,
+            }}
+            linearGradientProps={null}
+            iconContainerStyle={{background: '#000'}}
+            loadingProps={{animating: true}}
+            onPress={() =>
+              Linking.openURL(
+                'https://calendar.google.com/calendar/embed?src=c_m6cg4kk9ia0vn3kb4g2t0k9ut8%40group.calendar.google.com&ctz=America%2FChicago',
+              )
+            }
+            title="Hutt Calendar"
+            titleProps={{}}
+            titleStyle={{marginHorizontal: 5}}
+          />
+          <Button
+            disabledTitleStyle={{color: '#00F'}}
+            containerStyle={{
+              margin: 5,
+            }}
+            linearGradientProps={null}
+            iconContainerStyle={{background: '#000'}}
+            loadingProps={{animating: true}}
+            onPress={() => Linking.openURL('https://kansasbeta.org')}
+            title="Website"
+            titleProps={{}}
+            titleStyle={{marginHorizontal: 5}}
+          />
+          <Button
+            disabledTitleStyle={{color: '#00F'}}
+            containerStyle={{
+              margin: 5,
+            }}
+            linearGradientProps={null}
+            iconContainerStyle={{background: '#000'}}
+            loadingProps={{animating: true}}
+            onPress={() =>
+              Linking.openURL('https://airtable.com/shrWu37unVXvyCMan')
+            }
+            title="Alumni Database"
+            titleProps={{}}
+            titleStyle={{marginHorizontal: 5}}
+          />
+          <Button
+            disabledTitleStyle={{color: '#00F'}}
+            containerStyle={{
+              margin: 5,
+            }}
+            linearGradientProps={null}
+            iconContainerStyle={{background: '#000'}}
+            loadingProps={{animating: true}}
+            onPress={() =>
+              Linking.openURL(
+                'https://drive.google.com/drive/folders/1qqoN9hwTfAqlddozdYLOIhfd97X3U1Ac?usp=sharing',
+              )
+            }
+            title="Weekly Schedule"
+            titleProps={{}}
+            titleStyle={{marginHorizontal: 5}}
+          />
         </View>
-      </ScrollView> */}
-    </SafeAreaView>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 };
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  headerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#397af8',
+    marginBottom: 20,
+    width: '100%',
+    paddingVertical: 15,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  heading: {
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  subheaderText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
